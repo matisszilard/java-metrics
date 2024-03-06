@@ -1,0 +1,22 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - .:/etc/prometheus
+      - prom_data:/prometheus
+    networks:
+      - java-metrics
+
+volumes:
+  prom_data:
+
+networks:
+  java-metrics:
+    name: java-metrics
+    driver: bridge
