@@ -16,10 +16,10 @@ all:
 #
 
 .PHONY: start
-start: stop start-prometheus start-grafana
+start: stop start-prometheus start-grafana start-weather
 
 .PHONY: stop
-stop: stop-prometheus stop-grafana
+stop: stop-prometheus stop-grafana stop-weather
 
 .PHONY: start-grafana
 start-grafana: stop-grafana
@@ -36,3 +36,16 @@ start-prometheus: stop-prometheus
 .PHONY: stop-prometheus
 stop-prometheus:
 	docker-compose -f prometheus/docker-compose.yml rm -s -f
+
+.PHONY: start-weather
+start-weather: stop-weather
+	docker-compose -f ./docker-compose.yml up -d
+
+.PHONY: stop-weather
+stop-weather:
+	docker-compose -f ./docker-compose.yml rm -s -f
+
+.PHONY: build
+build:
+	cd ./weather; ./gradlew clean assemble
+	cd ./weather; docker build --build-arg target=weather-service -t weather-service -f ./Dockerfile .

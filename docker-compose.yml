@@ -1,0 +1,17 @@
+version: "3.5"
+
+services:
+  weather-service:
+    image: weather-service:latest
+    container_name: weather-service
+    ports:
+      - 8080:8080
+      - 8081:9090
+    restart: unless-stopped
+    networks:
+      - java-metrics
+
+networks:
+  java-metrics:
+    name: java-metrics
+    driver: bridge
