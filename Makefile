@@ -49,3 +49,8 @@ stop-weather:
 build:
 	cd ./weather-service; ./gradlew clean assemble
 	cd ./weather-service; docker build --build-arg target=weather-service -t weather-service -f ./Dockerfile .
+
+.PHONY: build
+build-sensor:
+	cd ./sensors; ./gradlew clean assemble
+	cd ./sensors; docker build --build-arg target=weather-service -t weather-service -f ./Dockerfile .

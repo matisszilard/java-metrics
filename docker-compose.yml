@@ -10,6 +10,15 @@ services:
     restart: unless-stopped
     networks:
       - java-metrics
+  sensor-service:
+    image: sensor-service:latest
+    container_name: sensor-service
+    ports:
+      - 8080:8080
+      - 8081:9090
+    restart: unless-stopped
+    networks:
+      - java-metrics
 
 networks:
   java-metrics:
