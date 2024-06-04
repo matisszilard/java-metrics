@@ -29,8 +29,6 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.0.2'
     implementation 'io.micrometer:micrometer-registry-prometheus:1.10.5'
 
-    implementation("com.open-meteo:sdk:1.4.0")
-
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 

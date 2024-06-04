@@ -1,0 +1,17 @@
+meta {
+  name: POST Sensors
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8081/api/v1/sensors
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "test"
+  }
+}
