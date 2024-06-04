@@ -52,5 +52,5 @@ build:
 
 .PHONY: build
 build-sensor:
-	cd ./sensors; ./gradlew clean assemble
-	cd ./sensors; docker build --build-arg target=weather-service -t weather-service -f ./Dockerfile .
+	cd ./sensors-service; ./gradlew clean assemble
+	cd ./sensors-service; docker build --build-arg target=sensors-service -t sensors-service -f ./Dockerfile .

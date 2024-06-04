@@ -6,16 +6,16 @@ services:
     container_name: weather-service
     ports:
       - 8080:8080
-      - 8081:9090
+      - 9080:9090
     restart: unless-stopped
     networks:
       - java-metrics
   sensor-service:
-    image: sensor-service:latest
-    container_name: sensor-service
+    image: sensors-service:latest
+    container_name: sensors-service
     ports:
-      - 8080:8080
-      - 8081:9090
+      - 8081:8080
+      - 9081:9090
     restart: unless-stopped
     networks:
       - java-metrics
